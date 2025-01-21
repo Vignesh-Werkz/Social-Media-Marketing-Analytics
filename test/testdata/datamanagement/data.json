@@ -1,0 +1,83 @@
+{
+    "_id": {
+        "$oid": "66f87512943eb6fb8bb19492"
+    },
+    "comments": [],
+    "created_utc": {
+        "$numberDouble": "1727558663.0"
+    },
+    "model_output": {
+        "vader": {
+            "selftext_sentiment": {
+                "$numberDouble": "0.8537"
+            },
+            "title_sentiment": {
+                "$numberDouble": "0.0"
+            },
+            "comments_sentiment": []
+        },
+        "textblob": {
+            "selftext_sentiment": {
+                "$numberDouble": "0.0"
+            },
+            "title_sentiment": {
+                "$numberDouble": "0.0"
+            },
+            "comments_sentiment": []
+        }
+    },
+    "selftext": "I always get that 3am motivation trying to boost myself but got nothing to do, now I need to find a place to improve and work on, please give me some suggestion ",
+    "subreddit": "Python",
+    "title": "I finished 6 hours python tutorial, now what?",
+    "keywords": ["python", "tutorial", "motivation"],
+    "transformed_data": {
+        "selftext": "i always get that 3am motivation trying to boost myself but got nothing to do now i need to find a place to improve and work on please give me some suggestion",
+        "title": "i finished 6 hours python tutorial now what",
+        "comments": [],
+        "selftext_tokens": [
+            "i",
+            "always",
+            "get",
+            "that",
+            "3am",
+            "motivation",
+            "trying",
+            "boost",
+            "myself",
+            "but",
+            "got",
+            "nothing",
+            "do",
+            "now",
+            "i",
+            "need",
+            "find",
+            "place",
+            "improve",
+            "work",
+            "on",
+            "please",
+            "give",
+            "me",
+            "some",
+            "suggestion"
+        ],
+        "title_tokens": [
+            "i",
+            "finished",
+            "6",
+            "hours",
+            "python",
+            "tutorial",
+            "now",
+            "what"
+        ],
+        "comments_tokens": []
+    },
+    "ups": {
+        "$numberInt": "1"
+    },
+    "upvote_ratio": {
+        "$numberDouble": "1.0"
+    }
+}

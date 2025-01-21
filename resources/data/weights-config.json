@@ -1,0 +1,40 @@
+[
+    {
+        "aggregateName": "aggregate1",
+        "weights": [
+            {
+                "model_name": "vader",
+                "model_weight": 0.5,
+                "title_sentiment": 0.3,
+                "selftext_sentiment": 0.2,
+                "comments_sentiment": 0.5
+            },
+            {
+                "model_name": "textblob",
+                "model_weight": 0.38,
+                "title_sentiment": 0.27,
+                "selftext_sentiment": 0.56,
+                "comments_sentiment": 0.2
+            }
+        ]
+    },
+    {
+        "aggregateName": "aggregate2",
+        "weights": [
+            {
+                "model_name": "vader",
+                "model_weight": 0.6,
+                "title_sentiment": 0.5,
+                "selftext_sentiment": 0.2,
+                "comments_sentiment": 0.2
+            },
+            {
+                "model_name": "textblob",
+                "model_weight": 0.4,
+                "title_sentiment": 0.7,
+                "selftext_sentiment": 0.4,
+                "comments_sentiment": 0.1
+            }
+        ]
+    }
+]

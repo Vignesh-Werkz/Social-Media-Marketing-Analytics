@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+      - main
+      - sprint2
+jobs:  
+  build:  
+    strategy:
+      fail-fast: false
+      matrix: 
+        os: [windows-latest] 
+        python-version:
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+    runs-on: ${{ matrix.os }}
+    name: Test
+    
+    steps:  
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install coverage nltk
+          python -m nltk.downloader punkt punkt_tab
+          
+      - name: Run tests with coverage
+        run: |
+          coverage run -m unittest
+          coverage xml -o test/coverage.xml
+
+      - name: Python Coverage
+        uses: orgoro/coverage@v3.2
+        with:
+          coverageFile: test/coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Coverage Report
+        run: |
+          coverage report

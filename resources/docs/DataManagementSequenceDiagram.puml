@@ -1,0 +1,52 @@
+@startuml ELT Sequence Diagram
+title ELT Sequence Diagram
+
+participant "ELTComponent" as ELT
+participant "MongoDBDataSource" as MongoSource
+participant "Pipe" as Pipe
+participant "TextCleaningFilter" as CleanFilter
+participant "TokenizationFilter" as TokenFilter
+participant "StopWordFilter" as StopFilter
+participant "SentimentAnalysisTransformation" as SentimentTransform
+participant "MongoDBDataTarget" as MongoTarget
+
+activate ELT
+ELT -> MongoSource : load() : List<Dict>
+activate MongoSource
+MongoSource -> ELT : return List<Dict>
+deactivate MongoSource
+
+ELT -> Pipe : preprocess(data)
+activate Pipe
+ELT -> CleanFilter : execute(Pipe)
+activate CleanFilter
+CleanFilter -> Pipe : cleaned_data : List<Dict>
+deactivate CleanFilter
+
+ELT -> TokenFilter : execute(Pipe)
+activate TokenFilter
+TokenFilter -> Pipe : tokenised_data : List<Dict>
+deactivate TokenFilter
+
+ELT -> StopFilter : execute(Pipe)
+activate StopFilter
+StopFilter -> Pipe : filtered_data : List<Dict>
+deactivate StopFilter
+
+ELT -> Pipe : get_data() : List<Dict>
+Pipe -> ELT : data : List<Dict>
+deactivate Pipe
+
+ELT -> SentimentTransform : transform(List<Dict>)
+activate SentimentTransform
+SentimentTransform -> ELT : transformed_data : List<Dict>
+deactivate SentimentTransform
+
+ELT -> MongoTarget : write(transformed_data : List<Dict>)
+activate MongoTarget
+MongoTarget -> ELT : confirmation()
+deactivate MongoTarget
+
+deactivate ELT
+
+@enduml

@@ -1,0 +1,51 @@
+"""
+Using the online editor at https://www.planttext.com/ to create the class diagram for the Data Collection module.
+"""
+@startuml
+!theme mars
+
+title Data Collection
+
+skinparam componentStyle uml2
+
+interface DataCollection {
+  + {abstract} getData(dataSource, searchTerm) : String
+}
+
+class DataCollectionManager << (S,#FF7700) Singleton >> {
+  + getData(dataSource, searchTerm) : String
+}
+
+class QueryParser {
+  + parseQuery(dataSource, searchTerm) : Query
+}
+
+abstract class Query {
+  + {abstract} execute(searchTerm) : String
+}
+
+class XYZQuery {
+  + execute(searchTerm) : String
+}
+
+abstract class Api {
+  + runApi(searchTerm)
+}
+
+class XYZApi{
+  + APP_ID
+  + SECRET_KEY
+  + USERNAME
+  + PASSWORD
+  + runApi(searchTerm) <<Override>>
+}
+
+DataCollection <|-down- DataCollectionManager : Implements
+DataCollectionManager -right- Query : Executes -->
+QueryParser "1" -up- DataCollectionManager
+QueryParser -right- XYZQuery : Creates -->
+Query <|-down- XYZQuery : Inherits
+Api <|-down- XYZApi : Inherits
+XYZApi -left- XYZQuery : Calls -->
+
+@enduml

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+service RecalculateAggregate {
+  rpc RecalculateAggregate(RecalculateRequest) returns (RecalculateResponse);
+}
+
+service RecalculateIndicator {
+  rpc RecalculateIndicator(RecalculateRequest) returns (RecalculateResponse);
+}
+
+message RecalculateRequest {
+  string object_name = 1;
+}
+
+message RecalculateResponse {
+  string result = 1;
+}

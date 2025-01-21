@@ -1,0 +1,76 @@
+@startuml
+title Extract, Load and Transform Components
+
+' Class definitions for the ELT process
+
+class ELTComponent {
+    +load() : List<Dict>
+    +preprocess(pipe: Pipe) : List<Dict>
+    +transform(data: List<Dict>) : List<Dict>
+    +execute() : void
+}
+
+class DataSource {
+    +read() : List<Dict>
+}
+
+class MongoDBDataSource {
+    +read() : List<Dict>
+}
+
+class DataTarget {
+    +write(data: List<Dict>) : void
+}
+
+class MongoDBDataTarget {
+    +write(data: List<Dict>) : void
+}
+
+class Pipe {
+    +set_data(data: List<Dict>) : void
+    +get_data() : List<Dict>
+}
+
+abstract class Filter {
+    +execute(pipe: Pipe) : void
+}
+
+class StopWordFilter {
+    -stop_words: List<String>
+    +StopWordFilter(stop_words: List<String>)
+    +execute(pipe: Pipe) : void
+}
+
+class TextCleaningFilter {
+    +execute(pipe: Pipe) : void
+}
+
+class TokenizationFilter {
+    +execute(pipe: Pipe) : void
+}
+
+abstract class Transformation {
+    +apply(data: List<Dict>) : List<Dict>
+}
+
+class SentimentAnalysisTransformation {
+    +apply(data: List<Dict>) : List<Dict>
+}
+
+' Relationships
+
+ELTComponent --> DataSource : loads raw data
+ELTComponent --> DataTarget : writes processed data
+ELTComponent --> Transformation : applies
+ELTComponent --> Pipe : uses for preprocessing
+Pipe --> Filter : passes through preprocessing filters
+
+DataSource <|-- MongoDBDataSource
+DataTarget <|-- MongoDBDataTarget
+Transformation <|-- SentimentAnalysisTransformation
+
+Filter <|-- StopWordFilter
+Filter <|-- TextCleaningFilter
+Filter <|-- TokenizationFilter
+
+@enduml

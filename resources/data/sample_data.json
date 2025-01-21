@@ -1,0 +1,41 @@
+[
+    {
+        "_id": "605c72f0f1d2b9305a4a7c25",
+        "date": "2023-09-10T12:00:00Z",
+        "sub_id": "subreddit_001",
+        "subreddit": "python",
+        "author_id": "author_001",
+        "author": "example_user",
+        "title": "How to use PyMongo with Python",
+        "text": "This post discusses how to use PyMongo to interact with MongoDB in Python.",
+        "url": "https://reddit.com/r/python/example_post",
+        "upvote_ratio": 0.95,
+        "num_comments": 25
+    },
+    {
+        "_id": "605c72f0f1d2b9305a4a7c26",
+        "date": "2023-09-09T15:30:00Z",
+        "sub_id": "subreddit_002",
+        "subreddit": "datascience",
+        "author_id": "author_002",
+        "author": "data_scientist",
+        "title": "Data Science Best Practices",
+        "text": "In this post, we explore best practices in data science for handling large datasets.",
+        "url": "https://reddit.com/r/datascience/example_post",
+        "upvote_ratio": 0.89,
+        "num_comments": 18
+    },
+    {
+        "_id": "605c72f0f1d2b9305a4a7c27",
+        "date": "2023-09-08T10:45:00Z",
+        "sub_id": "subreddit_003",
+        "subreddit": "machinelearning",
+        "author_id": "author_003",
+        "author": "ml_expert",
+        "title": "Introduction to Machine Learning",
+        "text": "This post provides an introduction to machine learning concepts, including supervised and unsupervised learning.",
+        "url": "https://reddit.com/r/machinelearning/example_post",
+        "upvote_ratio": 0.92,
+        "num_comments": 40
+    }
+]

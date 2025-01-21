@@ -1,0 +1,28 @@
+# Optimisation
+__pycache__/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# VSCode
+.vscode/
+
+# JetBrains
+.idea/
+
+# Anaconda
+.conda
+
+# Jupyter Notebook
+.ipynb_checkpoints
+.ipynb
+CS3203-ColabMVP.ipynb
+
+#pylintrc
+.pylintrc
